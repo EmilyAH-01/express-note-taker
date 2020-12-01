@@ -77,7 +77,7 @@
     const renderActiveNote = () => {
       $saveNoteBtn.hide();
 
-      if (activeNote.id) {
+      if (activeNote.id == 0 || activeNote.id) { // Added "activeNote.id == 0" because notes with an id of 0 weren't being rendered
         $noteTitle.attr("readonly", true);
         $noteText.attr("readonly", true);
         $noteTitle.val(activeNote.title);
