@@ -19,7 +19,7 @@ module.exports = function(app) {
     // notes as JSON.
     app.get("/api/notes", function(req, res) {
         // Load data:
-        var rawNotes = fs.readFileSync("../../../db/db.json");
+        var rawNotes = fs.readFileSync("db/db.json");
         noteData = JSON.parse(rawNotes);
         console.log(noteData);
         return res.json(noteData);
@@ -47,7 +47,7 @@ module.exports = function(app) {
 
         var stringNotes = JSON.stringify(noteData); // converts object to string
 
-        fs.writeFileSync("../../../db/db.json", stringNotes); // writes new notes to db.json file
+        fs.writeFileSync("db/db.json", stringNotes); // writes new notes to db.json file
 
         return res.json(stringNotes); // post new notes as JSON to /api/notes
     })
@@ -69,9 +69,9 @@ module.exports = function(app) {
         }
 
         var stringNotes = JSON.stringify(noteData); // converts object to string
-        fs.writeFileSync("../../../db/db.json", stringNotes); // writes new notes to db.json file
+        fs.writeFileSync("db/db.json", stringNotes); // writes new notes to db.json file
 
         return res.json(false);
-    });
+    }); 
 }
 
