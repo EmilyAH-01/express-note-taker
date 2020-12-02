@@ -1,3 +1,8 @@
+// Emily Herman 
+// MSU Coding Bootcamp Homework 11
+// Due date: 12/1/2020
+// index.js: Provided code; one modification made, indicated with an inline comment (line 44)
+
 const $noteTitle = $(".note-title");
 const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
@@ -36,7 +41,7 @@ const deleteNote = (id) => {
 const renderActiveNote = () => {
   $saveNoteBtn.hide();
 
-  if (activeNote.id == 0 || activeNote.id) { // Only modification: added case for activeNote.id==0 to handle first note id
+  if (activeNote.id == 0 || activeNote.id) { // Only modification: added case 'activeNote.id==0' to handle first note (otherwise read 0 as false)
     $noteTitle.attr("readonly", true);
     $noteText.attr("readonly", true);
     $noteTitle.val(activeNote.title);

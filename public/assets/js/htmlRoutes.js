@@ -1,3 +1,8 @@
+// Emily Herman 
+// MSU Coding Bootcamp Homework 11
+// Due date: 12/1/2020
+// htmlRoutes.js: get, post, and delete notes to/from /api/notes page
+
 // Dependencies:
 var path = require("path");
 var fs = require("fs");
@@ -10,66 +15,64 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../../index.html"));
     });
 
-    // GET `/notes` - Should return the `notes.html` file.
+    // GET `/notes` - Returns the `notes.html` file
     app.get("/notes", function(req, res) {
         res.sendFile(path.join(__dirname, "../../notes.html"));
     });
     
-    // GET `/api/notes` - Should read the `db.json` file and return all saved 
-    // notes as JSON.
+    // GET `/api/notes` - Reads the `db.json` file and returns all saved notes as JSON
     app.get("/api/notes", function(req, res) {
-        // Load data:
+       
+        // Read notes
         var rawNotes = fs.readFileSync("db/db.json");
+        
+        // Convert notes to JSON
         noteData = JSON.parse(rawNotes);
-        console.log(noteData);
+
         return res.json(noteData);
     })
 
-    // GET `*` - Should return the `index.html` file
+    // GET `*` - returns the `index.html` file
     app.get("*", function(req, res) {
         res.sendFile(path.join(__dirname, "../../index.html"));
     });
 
 
-    // POST `/api/notes` - Should receive a new note to save on the request 
-    // body, add it to the `db.json` file, and then return the new note to the 
-    // client.
+    // POST `/api/notes` - Receives a new note to save on the request body, adds it to the `db.json` file, 
+    //   then returns the new note to the client
     app.post("/api/notes", function(req, res) {
 
         var newNote = req.body;
-        console.log(typeof newNote); // object
-        let id = noteData.length;
 
+        // Assign an id to the new note, for use in delete function
+        let id = noteData.length;
         newNote.id = id;
 
-        noteData.push(newNote); // pushes note as object
-        console.log(noteData);
+        // Add note to end of note object
+        noteData.push(newNote); 
 
-        var stringNotes = JSON.stringify(noteData); // converts object to string
+        // Convert note to string and write to file
+        var stringNotes = JSON.stringify(noteData); 
+        fs.writeFileSync("db/db.json", stringNotes); 
 
-        fs.writeFileSync("db/db.json", stringNotes); // writes new notes to db.json file
-
-        return res.json(stringNotes); // post new notes as JSON to /api/notes
+        return res.json(stringNotes); 
     })
 
-    // * DELETE `/api/notes/:id` - Should receive a query parameter containing 
-    // the id of a note to delete. This means you'll need to find a way to give 
-    // each note a unique `id` when it's saved. In order to delete a note, 
-    // you'll need to read all notes from the `db.json` file, remove the note 
-    // with the given `id` property, and then rewrite the notes to the `db.json`
-    // file.
+    // * DELETE `/api/notes/:id` - Receives a query parameter containing the id of the note to delete
     app.delete("/api/notes/:id", function(req, res) {
         var deleteID = req.params.id;
 
+        // Remove note from Notes object
         noteData.splice(deleteID, 1);
 
-        // rewrite and push noteData with new ids
+        // Reassign ids to notes
         for (var i = 0; i < noteData.length; i++) {
             noteData[i].id = i;
         }
 
-        var stringNotes = JSON.stringify(noteData); // converts object to string
-        fs.writeFileSync("db/db.json", stringNotes); // writes new notes to db.json file
+        // Convert note object to string and write to file
+        var stringNotes = JSON.stringify(noteData); 
+        fs.writeFileSync("db/db.json", stringNotes); 
 
         return res.json(false);
     }); 
