@@ -1,7 +1,5 @@
 // Emily Herman 
-// MSU Coding Bootcamp Homework 11
-// Due date: 12/1/2020
-// htmlRoutes.js: get, post, and delete notes to/from /api/notes page
+// Get, post, and delete notes to/from /api/notes page
 
 // Dependencies:
 var path = require("path");

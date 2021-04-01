@@ -1,3 +1,5 @@
+// Emily Herman
+// Express server setup for note taker
 
 // Dependencies:
 var express = require("express");
