@@ -1,7 +1,3 @@
-// Emily Herman 
-// MSU Coding Bootcamp Homework 11
-// Due date: 12/1/2020
-// server.js: initializes server; run by entering "node server.js" in CLI (after "npm install")
 
 // Dependencies:
 var express = require("express");
