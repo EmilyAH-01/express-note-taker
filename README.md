@@ -1,24 +1,35 @@
-# Express_Note_Taker
+# express-note-taker
 
-Emily Herman 
-| MSU Coding Bootcamp Homework 11
-| Due date: 12/1/2020     
+## Summary 
+This program uses an Express web server, Node.js, and AJAX calls/HTTP requests to save, display, and delete notes entered by a user in the deployed web application. 
 
-INSTALLATION:
-To run this program, download all files, then enter "npm install" in command line. Previous Node.js installation is required.
+To go to the Notes page, click on the "Get Started" button on the homepage. To return to the homepage, click "Note Taker" in the upper left corner. After a note title and text are entered, a save button appears in the upper right corner; when clicked, the note title appears in the sidebar with a delete button. 
 
-USAGE:
-In command line, enter: node server.js
+<img src="public/assets/img/home_page.png" alt="Home page" width="600"/>
+<img src="public/assets/img/notes_page.png" alt="Notes page" width="600"/>
 
-DESCRIPTION: 
-This program uses Express, Node.js, and AJAX to save, display, and delete notes entered by a user in the deployed web application. To go to the Notes page, click on the "Get Started" button on the homepage. To return to the homepage, click "Note Taker" in the upper left corner. After a note title and text are entered, a save button appears in the upper right corner; when clicked, the note title appears in the sidebar with a delete button. 
+## Installation
+Before downloading this code to your machine, ensure previous Node.js installation. Then, enter the following in your command line:
 
-![See Images folder, home_page.png](images/home_page.png?raw=true)
+`git clone https://github.com/EmilyAH-01/express-note-taker`
 
-![See Images folder, notes_page.png](images/notes_page.png?raw=true)
+Next, install dependencies: 
 
-DEPLOYED APPLICATION:
-https://whispering-cove-69814.herokuapp.com/
+`npm install`
+
+## Usage
+In command line, enter: 
+
+`npm start`
+
+## Deployed Application
+https://emilyah-note-taker.herokuapp.com/
+
+## Future Development
+Store notes in a MySQL database, instead of a JSON file.
+
+## Credit
+The starter code for this application was provided by MSU Coding Bootcamp.
 
 
 
